@@ -52,8 +52,8 @@ namespace DSR
 
             if (1 == 2)
             {
-                d2 = new DateTime(2019, 7, 12 ) ;
-                d3 = new DateTime(2019, 7, 12 ) ;
+                d2 = new DateTime(2019, 10, 7 ) ;
+                d3 = new DateTime(2019, 10, 7 ) ;
             }
             DateTime jucerd = d2;    // jučerašnji dan
             string dan1 = d2.Day.ToString();
@@ -3603,7 +3603,7 @@ namespace DSR
 
                 } // ws = 1
                   // planiranje share
-                Workbook workbook2 = excel.Workbooks.Open(@"\\192.168.0.3\voditelj pogona\PRIPREMA ZA SASTANAK-PLANIRANJE\Planiranje (SHARE).xlsx", ReadOnly: true, Editable: false);
+           //     Workbook workbook2 = excel.Workbooks.Open(@"\\192.168.0.3\voditelj pogona\PRIPREMA ZA SASTANAK-PLANIRANJE\Planiranje (SHARE).xlsx", ReadOnly: true, Editable: false);
                 // transporti 2017
                 //Workbook workbook3 = excel.Workbooks.Open(@"\\192.168.0.3\Referentice$\Transporti 2017.xlsm", ReadOnly: true, Editable: false);
                 // Workbook workbook3 = excel.Workbooks.Open(@"c:\brisi\Transporti 2017.xlsx", ReadOnly: true, Editable: false);
@@ -3795,7 +3795,7 @@ namespace DSR
                 
                 // Pakiranje, to se više ne radi
 
-                connectionStringE = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=l:\PRIPREMA ZA SASTANAK-PLANIRANJE\Planiranje (SHARE).xlsx;Extended Properties='Excel 12.0 Xml;HDR=YES'";
+              //  connectionStringE = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=l:\PRIPREMA ZA SASTANAK-PLANIRANJE\Planiranje (SHARE).xlsx;Extended Properties='Excel 12.0 Xml;HDR=YES'";
                 //connectionStringE = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=l:\dokumenti\Planiranje (SHARE).xlsx;Extended Properties='Excel 12.0 Xml;HDR=YES'";
                 v1 = ""; v2 = ""; v3 = "";
                 //using (System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(connectionStringE))
@@ -3848,39 +3848,42 @@ namespace DSR
 
                 red1 = 141 + dana;
                 v1 = ""; v2 = ""; v3 = ""; v4 = "";
-                if (ws < 4)  // samo dnevni i tjedni izvještaj
-                { 
-                    using (System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(connectionStringE))
+                if (1 == 2)
+                {
+                    if (ws < 4)  // samo dnevni i tjedni izvještaj
                     {
-                        System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand();
-                        cmd.Connection = conn;
-                        cmd.CommandText = "SELECT * from [KALIONA$] where day(datum)=" + dan1 + " and month(datum)=" + m1 + " and year(datum)=" + g1;
-
-                        conn.Open();
-                        System.Data.IDataReader dr = cmd.ExecuteReader();
-
-                        while (dr.Read())
+                        using (System.Data.OleDb.OleDbConnection conn = new System.Data.OleDb.OleDbConnection(connectionStringE))
                         {
+                            System.Data.OleDb.OleDbCommand cmd = new System.Data.OleDb.OleDbCommand();
+                            cmd.Connection = conn;
+                            cmd.CommandText = "SELECT * from [KALIONA$] where day(datum)=" + dan1 + " and month(datum)=" + m1 + " and year(datum)=" + g1;
 
-                            v1 = dr[17].ToString(); // kupac trazi
+                            conn.Open();
+                            System.Data.IDataReader dr = cmd.ExecuteReader();
 
+                            while (dr.Read())
+                            {
+
+                                v1 = dr[17].ToString(); // kupac trazi
+
+                            }
+                            conn.Close();
                         }
-                        conn.Close();
                     }
+                    if (ws == 1)
+                        worksheet.Rows.Cells[34, 9].value = v1;  //  Kaliona   cementacija kg
+
+                    //workbook2.Close(false);
+                    //workbook2.Close(false, Type.Missing, Type.Missing);
+                    //workbook2.Close(false, Type.Missing, Type.Missing);
+
+                    GC.Collect();
+
+                    //objExcel.Application.Quit();
+                    //objExcel.Quit();
+                    Console.WriteLine("Zatvoreno Planiranje share   trenutno vrijeme " + DateTime.Now);
+
                 }
-                if (ws == 1)
-                    worksheet.Rows.Cells[34, 9].value = v1;  //  Kaliona   cementacija kg
-                
-                //workbook2.Close(false);
-                workbook2.Close(false, Type.Missing, Type.Missing);
-                //workbook2.Close(false, Type.Missing, Type.Missing);
-
-                GC.Collect();
-
-                //objExcel.Application.Quit();
-                //objExcel.Quit();
-                Console.WriteLine("Zatvoreno Planiranje share   trenutno vrijeme " + DateTime.Now);
-
                 // }  // if ws==1
                 //Range row1 = worksheet.Rows.Cells[7, 3];
                 //Range row2 = worksheet.Rows.Cells[13, 3];
@@ -4801,7 +4804,7 @@ namespace DSR
                 int prvii = 1, normaukup1 = 0, normaukup2 = 0, erv1 = 0, erv2 = 0, erv = 0, normaukupp = 0 , zadnjired=0;
                 double cijena1 = 0.0, cijena2 = 0.0, norm = 0.0, norm1 = 0.0;
                 bool joss = true;
-                string brisi1 = "";                
+                string brisi1 = "",tokdod1="",tokdod2="";                
 
                 while (reader.Read())
                 {                    
@@ -4835,7 +4838,7 @@ namespace DSR
                                                
                         if (zadnjired == 0)
                         {
-                            if (reader["norma"] != DBNull.Value)
+                            if (reader["norma"] != DBNull.Value && reader["linija"] != DBNull.Value)
                             {
                                 hala1 = (reader["hala"].ToString());
                                 if (hala1 == "")
@@ -4863,8 +4866,37 @@ namespace DSR
                                 continue;
                             }
 
+                            //if (reader["norma"] != DBNull.Value && reader["linija"] != DBNull.Value)
+                            //{
+                            //    hala1 = (reader["hala"].ToString());
+                            //    if (hala1 == "")
+                            //    {
+                            //        hala1 = (reader["halal"].ToString());
+                            //        naziv1 = (reader["naziv"].ToString());
+                            //        worksheet4l.Rows.Cells[5 + i, 1].value = dat1;
+                            //        worksheet4l.Rows.Cells[5 + i, 2].value = hala1;
+                            //        worksheet4l.Rows.Cells[5 + i, 3].value = naziv1;
+                            //        i++;
+                            //        reader.Read();
+                            //        continue;
+                            //    }
+                            //}
+                            //else
+                            //{
+                            //    hala1 = (reader["halal"].ToString());
+                            //    naziv1 = (reader["naziv"].ToString());
+                            //    worksheet4l.Rows.Cells[5 + i, 1].value = dat1;
+                            //    worksheet4l.Rows.Cells[5 + i, 2].value = hala1;
+                            //    worksheet4l.Rows.Cells[5 + i, 3].value = naziv1;
+                            //    i++;
+                            //    reader.Read();                                
+                            //    continue;
+                            //}
+
 
                             smjena1 = (reader["smjena"].ToString());
+                            tokdod1 = (reader["tokdod"].ToString());
+
                             proiz1 = (reader["nazivpro"].ToString());
                             linija1 = (reader["linija"].ToString());
                             tt1 = (reader["tt"].ToString());
@@ -4980,10 +5012,10 @@ namespace DSR
 
                             while (readera.Read())
                             {
-                                if (linija2 == "16")
-                                {
-                                    int tt211 = 1;
-                                }
+                                //if (rfind.dbo.tokodod(linija2)>0)
+                                //{
+                                //    int tt211 = 1;
+                                //}
 
                                 aktivnost1 = readera["aktivnost"].ToString();
                                 trajanje1 = readera["trajanje"].ToString();
@@ -5042,7 +5074,9 @@ namespace DSR
 
                         worksheet4l.Rows.Cells[5 + i, 2].value = hala2;
                         worksheet4l.Rows.Cells[5 + i, 3].value = linija2;
-                        if (linija2.Contains("VC510") || linija2.Contains("HURCO") || linija2.Contains("INDEX") || linija2.Contains("GT600") || tt2.Contains("1"))
+                        //if (linija2.Contains("VC510") || linija2.Contains("HURCO") || linija2.Contains("INDEX") || linija2.Contains("GT600") || tt2.Contains("1"))
+
+                        if (tokdod2=="0")
                         {
                             worksheet4l.Rows.Cells[5 + i, 4].value = "Dodatne operacije";
                         }
@@ -5147,6 +5181,7 @@ namespace DSR
                         proiz2 = proiz1;
                         radninalog2 = radninalog1;
                         linija2 = linija1;
+                        tokdod2 = tokdod1;
                         tt2 = tt1;
                         cijena2 = cijena1;
                         norma = norma1;
@@ -5214,8 +5249,8 @@ namespace DSR
             excel.Application.ActiveWorkbook.SaveAs(fileName);
 
             //file bez vrijednosti
-            string fileNamebv  = @"c:\brisi\dsrv" + nuland + d2.Day.ToString() + nulanm + d2.Month.ToString() + d2.Year.ToString() + ".xlsx";
-            string fileNamebv2 = @"c:\brisi\dsrv2_" + nuland + d2.Day.ToString() + nulanm + d2.Month.ToString() + d2.Year.ToString() + ".xlsx";
+            string fileNamebv  = @"L:\izvještaji\dsr\dsrv" + nuland + d2.Day.ToString() + nulanm + d2.Month.ToString() + d2.Year.ToString() + ".xlsx";
+            string fileNamebv2 = @"L:\izvještaji\dsr\dsrv2_" + nuland + d2.Day.ToString() + nulanm + d2.Month.ToString() + d2.Year.ToString() + ".xlsx";
 
             fi = new FileInfo(fileNamebv);
             if (fi.Exists) File.Delete(fileNamebv);
@@ -5426,7 +5461,7 @@ namespace DSR
             workshstelanje = null;
             workbook = null;
             app = null;
-            int test = 10;
+            int test = 0;
 
             MailMessage mail = new MailMessage("gasparic.s@feroimpex.hr", "gasparic.s@feroimpex.hr,srecckog@gmail.com");
 
