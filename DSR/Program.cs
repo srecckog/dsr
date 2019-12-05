@@ -22,7 +22,7 @@ namespace DSR
             //Console.ReadKey();
 
             string connectionString = @"Data Source=192.168.0.3;Initial Catalog=FeroApp;User ID=sa;Password=AdminFX9.";
-            string connectionString2 = @"Data Source=192.168.0.3;Initial Catalog=RFIND;User ID=sa;Password=AdminFX9.";
+            string connectionString2 = @"Data Source=192.168.0.3;Initial Catalog=FX_RFIND;User ID=sa;Password=AdminFX9.";
 
             string c7 = "0", c8 = "0", c9 = "0", c10 = "0", c11 = "0", c12 = "0", c13 = "0", c14 = "0", c15 = "0",  c151 = "0", c16 = "0", c17 = "0" , c18 = "0" , c19 = "0", c21 = "0" ,c23="0"; // 
             double f7 = 0.0, f8 = 0.0, f9 = 0.0, f10 = 0.0, f11 = 0.0, f12 = 0.0, f13 = 0.0, f14 = 0.0, f15 = 0.0, f151 = 0.0, f16 = 0.0, f17 = 0.0, f18 = 0.0, f19 = 0.0, f21 = 0.0, f23 = 0.0; // 
@@ -177,7 +177,7 @@ namespace DSR
                         //SqlCommand sqlCommand = new SqlCommand("SELECT [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt FROM radniciAT0 union all select [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt from radniciTB0 where mt in ( 700,702,703,710,716) order by prezime", cn);
                         // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
 
-                        sql1 = "rfind.dbo.realizacija '" + dat1 + "','" + dat2 + "',21";
+                        sql1 = "FX_RFIND.dbo.realizacija '" + dat1 + "','" + dat2 + "',21";
 
                         SqlCommand sqlCommand = new SqlCommand(sql1, cn);
 
@@ -197,7 +197,7 @@ namespace DSR
                         //SqlCommand sqlCommand = new SqlCommand("SELECT [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt FROM radniciAT0 union all select [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt from radniciTB0 where mt in ( 700,702,703,710,716) order by prezime", cn);
                         // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
 
-                        sql1 = "rfind.dbo.realizacija '" + dat1 + "','" + dat2 + "',1";
+                        sql1 = "FX_RFIND.dbo.realizacija '" + dat1 + "','" + dat2 + "',1";
 
                         SqlCommand sqlCommand = new SqlCommand(sql1, cn);
 
@@ -372,11 +372,11 @@ namespace DSR
                     // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
                     if (ws <= 3)
                     {
-                        sql1 = "rfind.dbo.LDP_recalc '" + dat1 + "','" + dat3 + "',102";
+                        sql1 = "FX_RFIND.dbo.LDP_recalc '" + dat1 + "','" + dat3 + "',102";
                     }
                     else
                     {
-                        sql1 = "rfind.dbo.LDP_recalc '" + dat1 + "','" + dat3 + "',1020";
+                        sql1 = "FX_RFIND.dbo.LDP_recalc '" + dat1 + "','" + dat3 + "',1020";
                     }
 
                     SqlCommand sqlCommand = new SqlCommand(sql1, cn);
@@ -549,11 +549,11 @@ namespace DSR
                     // SELECT * FROM feroapp.dbo.EvidencijaProizvedenoFakturirano_Zbirno(@dat1, @dat2)
                     if (ws <=3)   // dnevni,tjedni,mjesečni
                     {
-                        sql1 = "rfind.dbo.ldp_recalc '" + dat1 + "','" + dat2 + "',112";
+                        sql1 = "FX_RFIND.dbo.ldp_recalc '" + dat1 + "','" + dat2 + "',112";
                     }
                     else
                     {
-                        sql1 = "rfind.dbo.ldp_recalc '" + dat1 + "','" + dat2 + "',113";
+                        sql1 = "FX_RFIND.dbo.ldp_recalc '" + dat1 + "','" + dat2 + "',113";
                     }
 
                     SqlCommand sqlCommand = new SqlCommand(sql1, cn);
@@ -902,11 +902,11 @@ namespace DSR
                         // SELECT * FROM feroapp.dbo.EvidencijaProizvedenoFakturirano_Zbirno(@dat1, @dat2)
                         if (ws <= 3)   // dnevni,tjedni,mjesečni
                         {
-                            sql1 = "rfind.dbo.ldp_recalc '" + dat1 + "','" + dat2 + "',1121";
+                            sql1 = "FX_RFIND.dbo.ldp_recalc '" + dat1 + "','" + dat2 + "',1121";
                         }
                         else
                         {
-                            sql1 = "rfind.dbo.ldp_recalc '" + dat1 + "','" + dat2 + "',1131";
+                            sql1 = "FX_RFIND.dbo.ldp_recalc '" + dat1 + "','" + dat2 + "',1131";
                         }
 
                         SqlCommand sqlCommand = new SqlCommand(sql1, cn);
@@ -1198,11 +1198,11 @@ namespace DSR
                     // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
                     if (ws <= 3)    // d,t,m
                     {
-                        sql1 = "rfind.dbo.realizacija '" + dat1 + "','" + dat2 + "',13";
+                        sql1 = "FX_RFIND.dbo.realizacija '" + dat1 + "','" + dat2 + "',13";
                     }
                     else
                     {
-                        sql1 = "rfind.dbo.realizacija '" + dat1 + "','" + dat2 + "',131";
+                        sql1 = "FX_RFIND.dbo.realizacija '" + dat1 + "','" + dat2 + "',131";
                     }
                     SqlCommand sqlCommand = new SqlCommand(sql1, cn);
 
@@ -1461,9 +1461,9 @@ namespace DSR
                     // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
 
                     if (ws<=3)
-                        sql1 = "rfind.dbo.ldp_recalc '" + dat1 + "','" + dat2 + "',61";
+                        sql1 = "FX_RFIND.dbo.ldp_recalc '" + dat1 + "','" + dat2 + "',61";
                     else
-                        sql1 = "rfind.dbo.ldp_recalc '" + dat1 + "','" + dat2 + "',610";
+                        sql1 = "FX_RFIND.dbo.ldp_recalc '" + dat1 + "','" + dat2 + "',610";
 
                     SqlCommand sqlCommand = new SqlCommand(sql1, cn);
 
@@ -1598,11 +1598,11 @@ namespace DSR
                     // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
                     if (ws <= 3)   //d,t,m
                     {
-                        sql1 = "rfind.dbo.realizacija '" + dat1 + "','" + dat2 + "',2";  // za sve hale
+                        sql1 = "FX_RFIND.dbo.realizacija '" + dat1 + "','" + dat2 + "',2";  // za sve hale
                     }
                     else
                     {
-                        sql1 = "rfind.dbo.realizacija '" + dat1 + "','" + dat2 + "',20";  // po halama
+                        sql1 = "FX_RFIND.dbo.realizacija '" + dat1 + "','" + dat2 + "',20";  // po halama
                     }
                     SqlCommand sqlCommand = new SqlCommand(sql1, cn);
 
@@ -1755,11 +1755,11 @@ namespace DSR
                         // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
                         if (ws <= 0)
                         {
-                            //sql1 = "rfind.dbo.realizacija '" + dat1 + "','" + dat2 + "',22";
+                            //sql1 = "FX_RFIND.dbo.realizacija '" + dat1 + "','" + dat2 + "',22";
                         }
                         else
                         {
-                            sql1 = "rfind.dbo.realizacija '" + dat1 + "','" + dat2 + "',221";
+                            sql1 = "FX_RFIND.dbo.realizacija '" + dat1 + "','" + dat2 + "',221";
                         }
                         SqlCommand sqlCommand = new SqlCommand(sql1, cn);
 
@@ -1897,11 +1897,11 @@ namespace DSR
                         // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
                         if (ws <= 0)
                         {
-                            //sql1 = "rfind.dbo.realizacija '" + dat1 + "','" + dat2 + "',22";
+                            //sql1 = "FX_RFIND.dbo.realizacija '" + dat1 + "','" + dat2 + "',22";
                         }
                         else
                         {
-                            sql1 = "rfind.dbo.realizacija '" + dat1 + "','" + dat2 + "',221";
+                            sql1 = "FX_RFIND.dbo.realizacija '" + dat1 + "','" + dat2 + "',221";
                         }
                         SqlCommand sqlCommand = new SqlCommand(sql1, cn);
 
@@ -2062,7 +2062,7 @@ namespace DSR
                         cn.Open();
                         //SqlCommand sqlCommand = new SqlCommand("SELECT [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt FROM radniciAT0 union all select [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt from radniciTB0 where mt in ( 700,702,703,710,716) order by prezime", cn);
                         // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
-                        sql1 = "rfind.dbo.realizacija '" + dat1 + "','" + dat2 + "',8";
+                        sql1 = "FX_RFIND.dbo.realizacija '" + dat1 + "','" + dat2 + "',8";
                         SqlCommand sqlCommand = new SqlCommand(sql1, cn);
 
                         SqlDataReader reader = sqlCommand.ExecuteReader();
@@ -2150,8 +2150,8 @@ namespace DSR
                     cn.Open();
                     //SqlCommand sqlCommand = new SqlCommand("SELECT [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt FROM radniciAT0 union all select [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt from radniciTB0 where mt in ( 700,702,703,710,716) order by prezime", cn);
                     // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
-                    sql1 = "rfind.dbo.ldp_recalc '0','0',8";
-                    sql1 = "rfind.dbo.ldp_recalc '"+dat1+"','"+dat1+"',109";
+                    sql1 = "FX_RFIND.dbo.ldp_recalc '0','0',8";
+                    sql1 = "FX_RFIND.dbo.ldp_recalc '"+dat1+"','"+dat1+"',109";
                     SqlCommand sqlCommand = new SqlCommand(sql1, cn);
 
                     SqlDataReader reader = sqlCommand.ExecuteReader();
@@ -2280,11 +2280,11 @@ namespace DSR
                     // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
                     if (ws <= 3)
                     {
-                        sql1 = "rfind.dbo.realizacija '" + dat1 + "','" + dat2 + "',3";
+                        sql1 = "FX_RFIND.dbo.realizacija '" + dat1 + "','" + dat2 + "',3";
                     }
                     else
                     {
-                        sql1 = "rfind.dbo.realizacija '" + dat1 + "','" + dat2 + "',31";
+                        sql1 = "FX_RFIND.dbo.realizacija '" + dat1 + "','" + dat2 + "',31";
                     }
                     SqlCommand sqlCommand = new SqlCommand(sql1, cn);
 
@@ -2837,7 +2837,7 @@ namespace DSR
                     cn.Open();
                     //SqlCommand sqlCommand = new SqlCommand("SELECT [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt FROM radniciAT0 union all select [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt from radniciTB0 where mt in ( 700,702,703,710,716) order by prezime", cn);
                     // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
-                    sql1 = "rfind.dbo.realizacija '" + dat1 + "','" + dat2 + "',5";
+                    sql1 = "FX_RFIND.dbo.realizacija '" + dat1 + "','" + dat2 + "',5";
                     SqlCommand sqlCommand = new SqlCommand(sql1, cn);
 
                     SqlDataReader reader = sqlCommand.ExecuteReader();
@@ -2880,7 +2880,7 @@ namespace DSR
                     cn.Open();
                     //SqlCommand sqlCommand = new SqlCommand("SELECT [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt FROM radniciAT0 union all select [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt from radniciTB0 where mt in ( 700,702,703,710,716) order by prezime", cn);
                     // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
-                    sql1 = "rfind.dbo.realizacija '" + dat1 + "','" + dat2 + "',4";
+                    sql1 = "FX_RFIND.dbo.realizacija '" + dat1 + "','" + dat2 + "',4";
                     SqlCommand sqlCommand = new SqlCommand(sql1, cn);
 
                     SqlDataReader reader = sqlCommand.ExecuteReader();
@@ -2911,7 +2911,7 @@ namespace DSR
                         cn.Open();
                         //SqlCommand sqlCommand = new SqlCommand("SELECT [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt FROM radniciAT0 union all select [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt from radniciTB0 where mt in ( 700,702,703,710,716) order by prezime", cn);
                         // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
-                        sql1 = "rfind.dbo.realizacija '" + dat1 + "','" + dat2 + "',6";
+                        sql1 = "FX_RFIND.dbo.realizacija '" + dat1 + "','" + dat2 + "',6";
                         SqlCommand sqlCommand = new SqlCommand(sql1, cn);
 
                         SqlDataReader reader = sqlCommand.ExecuteReader();
@@ -2951,7 +2951,7 @@ namespace DSR
                     cn.Open();
                     //SqlCommand sqlCommand = new SqlCommand("SELECT [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt FROM radniciAT0 union all select [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt from radniciTB0 where mt in ( 700,702,703,710,716) order by prezime", cn);
                     // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
-                    sql1 = "rfind.dbo.realizacija '" + dat1 + "','" + dat2 + "',61";
+                    sql1 = "FX_RFIND.dbo.realizacija '" + dat1 + "','" + dat2 + "',61";
                     SqlCommand sqlCommand = new SqlCommand(sql1, cn);
 
                     SqlDataReader reader = sqlCommand.ExecuteReader();
@@ -3076,7 +3076,7 @@ namespace DSR
                     cn.Open();
                     //SqlCommand sqlCommand = new SqlCommand("SELECT [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt FROM radniciAT0 union all select [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt from radniciTB0 where mt in ( 700,702,703,710,716) order by prezime", cn);
                     // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
-                    sql1 = "rfind.dbo.realizacija '" + dat1 + "','" + dat2 + "',41";
+                    sql1 = "FX_RFIND.dbo.realizacija '" + dat1 + "','" + dat2 + "',41";
                     SqlCommand sqlCommand = new SqlCommand(sql1, cn);
 
                     SqlDataReader reader = sqlCommand.ExecuteReader();
@@ -3098,7 +3098,7 @@ namespace DSR
                         cn.Open();
                         //SqlCommand sqlCommand = new SqlCommand("SELECT [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt FROM radniciAT0 union all select [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt from radniciTB0 where mt in ( 700,702,703,710,716) order by prezime", cn);
                         // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
-                        sql1 = "rfind.dbo.realizacija '" + dat1 + "','" + dat2 + "',6";
+                        sql1 = "FX_RFIND.dbo.realizacija '" + dat1 + "','" + dat2 + "',6";
                         SqlCommand sqlCommand = new SqlCommand(sql1, cn);
 
                         SqlDataReader reader = sqlCommand.ExecuteReader();
@@ -3139,7 +3139,7 @@ namespace DSR
                         cn.Open();
                         //SqlCommand sqlCommand = new SqlCommand("SELECT [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt FROM radniciAT0 union all select [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt from radniciTB0 where mt in ( 700,702,703,710,716) order by prezime", cn);
                         // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
-                        sql1 = "rfind.dbo.realizacija '" + dat3 + "','" + dat3 + "',7";
+                        sql1 = "FX_RFIND.dbo.realizacija '" + dat3 + "','" + dat3 + "',7";
                         SqlCommand sqlCommand = new SqlCommand(sql1, cn);
 
                         SqlDataReader reader = sqlCommand.ExecuteReader();
@@ -3218,7 +3218,7 @@ namespace DSR
                         cn.Open();
                         //SqlCommand sqlCommand = new SqlCommand("SELECT [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt FROM radniciAT0 union all select [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt from radniciTB0 where mt in ( 700,702,703,710,716) order by prezime", cn);
                         // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
-                        sql1 = "rfind.dbo.realizacija '" + dat3 + "','" + dat3 + "',71";
+                        sql1 = "FX_RFIND.dbo.realizacija '" + dat3 + "','" + dat3 + "',71";
                         SqlCommand sqlCommand = new SqlCommand(sql1, cn);
 
                         SqlDataReader reader = sqlCommand.ExecuteReader();
@@ -3307,7 +3307,7 @@ namespace DSR
                         //SqlCommand sqlCommand = new SqlCommand("SELECT [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt FROM radniciAT0 union all select [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt from radniciTB0 where mt in ( 700,702,703,710,716) order by prezime", cn);
                         // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
 
-                        sql1 = "rfind.dbo.ldp_recalc2 '" + dat1 + "','" + dat1 + "',7";
+                        sql1 = "FX_RFIND.dbo.ldp_recalc2 '" + dat1 + "','" + dat1 + "',7";
                         SqlCommand sqlCommand = new SqlCommand(sql1, cn3);
 
                         SqlDataReader reader = sqlCommand.ExecuteReader();
@@ -3344,11 +3344,11 @@ namespace DSR
                         // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
                         if (ws<=3)
                         {
-                            sql1 = "rfind.dbo.ldp_recalc2 '" + datLDP + "','" + datLDP + "',72";
+                            sql1 = "FX_RFIND.dbo.ldp_recalc2 '" + datLDP + "','" + datLDP + "',72";
                         }
                         else
                         {
-                            sql1 = "rfind.dbo.ldp_recalc2 '" + datLDP + "','" + datLDP + "',720";
+                            sql1 = "FX_RFIND.dbo.ldp_recalc2 '" + datLDP + "','" + datLDP + "',720";
                         }
                         
                         SqlCommand sqlCommand = new SqlCommand(sql1, cn);
@@ -3515,11 +3515,11 @@ namespace DSR
                         // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
                         if (ws <= 3)
                         {
-                            sql1 = "rfind.dbo.ldp_recalc2 '" + datLDP + "','" + datLDP + "',73";
+                            sql1 = "FX_RFIND.dbo.ldp_recalc2 '" + datLDP + "','" + datLDP + "',73";
                         }
                         else
                         {
-                            sql1 = "rfind.dbo.ldp_recalc2 '" + datLDP + "','" + datLDP + "',730";
+                            sql1 = "FX_RFIND.dbo.ldp_recalc2 '" + datLDP + "','" + datLDP + "',730";
                         }
                         SqlCommand sqlCommand = new SqlCommand(sql1, cn);
 
@@ -4060,7 +4060,7 @@ namespace DSR
 
                         ///////////////// update planiranjeshare
                         cn2.Open();
-                        sql1 = "insert into planiranje.dbo.planiranjeshare(datum, proizvedeno_tok, proizvedeno_do, vrijednost_tok, vrijednost_do, tjedan, kupac, lgr_kom, lgr_eur) select datum, kolicina_tok, kolicina_do, vrijednost_tok, vrijednost_do, tjedan, id_kupac, sgr_kom, sgr_eur from rfind.dbo.dpr where datum='"+dat1+"'";
+                        sql1 = "insert into planiranje.dbo.planiranjeshare(datum, proizvedeno_tok, proizvedeno_do, vrijednost_tok, vrijednost_do, tjedan, kupac, lgr_kom, lgr_eur) select datum, kolicina_tok, kolicina_do, vrijednost_tok, vrijednost_do, tjedan, id_kupac, sgr_kom, sgr_eur from FX_RFIND.dbo.dpr where datum='"+dat1+"'";
                         sqlCommand = new SqlCommand(sql1, cn2);
                         reader = sqlCommand.ExecuteReader();
                         cn2.Close();
@@ -4368,7 +4368,7 @@ namespace DSR
                 cn.Open();
                 //SqlCommand sqlCommand = new SqlCommand("SELECT [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt FROM radniciAT0 union all select [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt from radniciTB0 where mt in ( 700,702,703,710,716) order by prezime", cn);
                 // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
-                sql1 = "rfind.dbo.ldp_recalc2 '" + datLDP + "','" + datLDP + "',71";
+                sql1 = "FX_RFIND.dbo.ldp_recalc2 '" + datLDP + "','" + datLDP + "',71";
                 SqlCommand sqlCommand = new SqlCommand(sql1, cn);
 
                 SqlDataReader reader = sqlCommand.ExecuteReader();
@@ -4403,7 +4403,7 @@ namespace DSR
             using (SqlConnection cn = new SqlConnection(connectionString2))
             {
                 cn.Open();
-                sql1 = "rfind.dbo.ldp_recalc '" + datLDP + "','" + datLDP + "',10";
+                sql1 = "FX_RFIND.dbo.ldp_recalc '" + datLDP + "','" + datLDP + "',10";
                 SqlCommand sqlCommand = new SqlCommand(sql1, cn);
                 SqlDataReader reader = sqlCommand.ExecuteReader();
 
@@ -4444,7 +4444,7 @@ namespace DSR
                 cn.Open();
                 //SqlCommand sqlCommand = new SqlCommand("SELECT [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt FROM radniciAT0 union all select [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt from radniciTB0 where mt in ( 700,702,703,710,716) order by prezime", cn);
                 // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
-                sql1 = "rfind.dbo.ldp_recalc '" + dat13 + "','" + dat23 + "'," + smj; ;
+                sql1 = "FX_RFIND.dbo.ldp_recalc '" + dat13 + "','" + dat23 + "'," + smj; ;
                 int k1 = 0;
                 int n1 = 0;
 
@@ -4499,9 +4499,9 @@ namespace DSR
 
                     if (1 == 1)
                     {
-                        sql1 = "select * from rfind.dbo.evidnormiradad('" + datLDP + "','" + datLDP + "') order by vrsta1,vrsta,radnik,hala,smjena,linija"; //" + smj; bez računanja efektivnog radnog vremena  
+                        sql1 = "select * from FX_RFIND.dbo.evidnormiradad('" + datLDP + "','" + datLDP + "') order by vrsta1,vrsta,radnik,hala,smjena,linija"; //" + smj; bez računanja efektivnog radnog vremena  
 
-                        // sql1 = "rfind.dbo.ldp_recalc '" + dat13 + "','" + dat23 + "',41";
+                        // sql1 = "FX_RFIND.dbo.ldp_recalc '" + dat13 + "','" + dat23 + "',41";
                         SqlCommand sqlCommand = new SqlCommand(sql1, cn);
 
                         SqlDataReader reader = sqlCommand.ExecuteReader();
@@ -4647,7 +4647,7 @@ namespace DSR
                                     dat23 = dat3 + " 5:59:00";
                                 }
 
-                                string sqla = "select * from rfind.dbo.pregled_po_liniji( '" + dat13 + "','" + dat23 + "','" + hala2 + "','" + linija2.TrimEnd() + "')";
+                                string sqla = "select * from FX_RFIND.dbo.pregled_po_liniji( '" + dat13 + "','" + dat23 + "','" + hala2 + "','" + linija2.TrimEnd() + "')";
                                 SqlCommand sqlCommanda = new SqlCommand(sqla, cna);
                                 SqlDataReader readera = sqlCommanda.ExecuteReader();
                                 string aktivnost1 = "";
@@ -4790,7 +4790,7 @@ namespace DSR
                 cn.Open();
                 //SqlCommand sqlCommand = new SqlCommand("SELECT [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt FROM radniciAT0 union all select [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt from radniciTB0 where mt in ( 700,702,703,710,716) order by prezime", cn);
                 // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
-                sql1 = "rfind.dbo.ldp_recalc '" + datLDP + "','" + datLDP + "'," + smj; ;
+                sql1 = "FX_RFIND.dbo.ldp_recalc '" + datLDP + "','" + datLDP + "'," + smj; ;
                 SqlCommand sqlCommand = new SqlCommand(sql1, cn);
 
                 SqlDataReader reader = sqlCommand.ExecuteReader();
@@ -5002,7 +5002,7 @@ namespace DSR
                                 dat23 = dat3 + " 5:59:00";
                             }
 
-                            string sqla = "select * from rfind.dbo.pregled_po_liniji( '" + dat13 + "','" + dat23 + "','" + hala2 + "','" + linija2.TrimEnd() + "')";
+                            string sqla = "select * from FX_RFIND.dbo.pregled_po_liniji( '" + dat13 + "','" + dat23 + "','" + hala2 + "','" + linija2.TrimEnd() + "')";
                             SqlCommand sqlCommanda = new SqlCommand(sqla, cna);
                             SqlDataReader readera = sqlCommanda.ExecuteReader();
                             string aktivnost1 = "";
@@ -5012,7 +5012,7 @@ namespace DSR
 
                             while (readera.Read())
                             {
-                                //if (rfind.dbo.tokodod(linija2)>0)
+                                //if (FX_RFIND.dbo.tokodod(linija2)>0)
                                 //{
                                 //    int tt211 = 1;
                                 //}
@@ -5208,7 +5208,7 @@ namespace DSR
                 cn.Open();
                 //SqlCommand sqlCommand = new SqlCommand("SELECT [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt FROM radniciAT0 union all select [Radnik id] as id,[ime x] as ime,[prezime x] as prezime,rfid,rfid2,rfidhex,lokacija,mt from radniciTB0 where mt in ( 700,702,703,710,716) order by prezime", cn);
                 // SqlCommand sqlCommand = new SqlCommand("SELECT id, ime, prezime,rfid,rfid2,rfidhex,lokacija,mt FROM  radnici_ where mt in ( 700,702,703,710,716)  order by prezime", cn);
-                sql1 = "rfind.dbo.ldp_recalc '" + dat13 + "','" + dat23 + "'," + smj; ;
+                sql1 = "FX_RFIND.dbo.ldp_recalc '" + dat13 + "','" + dat23 + "'," + smj; ;
                 SqlCommand sqlCommand = new SqlCommand(sql1, cn);
 
                 SqlDataReader reader = sqlCommand.ExecuteReader();
@@ -5461,7 +5461,7 @@ namespace DSR
             workshstelanje = null;
             workbook = null;
             app = null;
-            int test = 0;
+            int test = 10;
 
             MailMessage mail = new MailMessage("gasparic.s@feroimpex.hr", "gasparic.s@feroimpex.hr,srecckog@gmail.com");
 
@@ -5472,7 +5472,7 @@ namespace DSR
             client.Port = 25;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = false;
-            client.Credentials = new System.Net.NetworkCredential("gasparic.s@feroimpex.hr", "gasparic1");
+            client.Credentials = new System.Net.NetworkCredential("gasparic.s@feroimpex.hr", "Srecko123");
             client.Host = "mail.feroimpex.hr";
             mail.Subject = "DPR " + datreps;
             mail.Body = "Daily production report for " + datreps;
@@ -5500,7 +5500,7 @@ if (test == 0)
             client.Port = 25;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = false;
-            client.Credentials = new System.Net.NetworkCredential("gasparic.s@feroimpex.hr", "gasparic1");
+            client.Credentials = new System.Net.NetworkCredential("gasparic.s@feroimpex.hr", "Srecko123");
             client.Host = "mail.feroimpex.hr";
 
             mail.Subject = "_DPR " + datreps;
@@ -5529,7 +5529,7 @@ if (test == 0)
                 client.Port = 25;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
-                client.Credentials = new System.Net.NetworkCredential("gasparic.s@feroimpex.hr", "gasparic1");
+                client.Credentials = new System.Net.NetworkCredential("gasparic.s@feroimpex.hr", "Srecko123");
                 client.Host = "mail.feroimpex.hr";
 
                 mail.Subject = " !!! INDEX LINIJA IMA OBRADU TOKARENJA , promjeni store " + datreps;
@@ -5559,7 +5559,7 @@ if (test == 0)
             client.Port = 25;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = false;
-            client.Credentials = new System.Net.NetworkCredential("gasparic.s@feroimpex.hr", "gasparic1");
+            client.Credentials = new System.Net.NetworkCredential("gasparic.s@feroimpex.hr", "Srecko123");
             client.Host = "mail.feroimpex.hr";
 
             mail.Subject = "_DPR2 " + datreps;
